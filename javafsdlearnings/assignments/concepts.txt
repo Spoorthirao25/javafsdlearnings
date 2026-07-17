@@ -1,0 +1,773 @@
+
+============================================================
+              JAVA COLLECTIONS FRAMEWORK
+============================================================
+
+Definition
+----------
+The Java Collections Framework (JCF) is a set of classes and
+interfaces used to store, retrieve, manipulate, and process
+groups of objects efficiently.
+
+Collection Framework
+--------------------
+
+                    Collection
+                         |
+       ---------------------------------
+       |               |               |
+      List            Set            Queue
+       |
+   ArrayList
+   LinkedList
+   Vector
+
+Map (Separate Hierarchy)
+------------------------
+
+          Map
+           |
+       HashMap
+       LinkedHashMap
+       TreeMap
+
+============================================================
+1. LIST
+============================================================
+
+Definition
+----------
+A List stores elements in insertion order.
+
+Features
+--------
+✔ Ordered
+✔ Allows Duplicates
+✔ Index Based
+✔ Allows Multiple Null Values
+
+Example
+
+Apple
+Banana
+Apple
+Orange
+
+Duplicate Apple is allowed.
+
+Common Implementations
+
+ArrayList
+
+LinkedList
+
+Vector
+
+============================================================
+LIST METHODS
+============================================================
+
+1. add()
+
+Adds an element.
+
+list.add("Apple");
+
+Output
+
+Apple
+
+----------------------------------------
+
+2. add(index, element)
+
+Insert at a specific position.
+
+list.add(1,"Banana");
+
+----------------------------------------
+
+3. addAll()
+
+Adds another collection.
+
+list.addAll(list2);
+
+----------------------------------------
+
+4. get(index)
+
+Returns an element.
+
+list.get(2);
+
+----------------------------------------
+
+5. set(index, element)
+
+Replaces an element.
+
+list.set(1,"Mango");
+
+----------------------------------------
+
+6. remove(index)
+
+Removes by index.
+
+list.remove(2);
+
+----------------------------------------
+
+7. remove(object)
+
+Removes by value.
+
+list.remove("Apple");
+
+----------------------------------------
+
+8. clear()
+
+Removes all elements.
+
+list.clear();
+
+----------------------------------------
+
+9. contains()
+
+Checks whether an element exists.
+
+list.contains("Apple");
+
+Returns
+
+true
+
+or
+
+false
+
+----------------------------------------
+
+10. size()
+
+Returns number of elements.
+
+list.size();
+
+----------------------------------------
+
+11. isEmpty()
+
+Checks list is empty.
+
+list.isEmpty();
+
+----------------------------------------
+
+12. indexOf()
+
+Returns first occurrence.
+
+list.indexOf("Apple");
+
+----------------------------------------
+
+13. lastIndexOf()
+
+Returns last occurrence.
+
+----------------------------------------
+
+14. sort()
+
+Sorts elements.
+
+Collections.sort(list);
+
+----------------------------------------
+
+15. reverse()
+
+Reverse order.
+
+Collections.reverse(list);
+
+----------------------------------------
+
+16. iterator()
+
+Traverses list.
+
+----------------------------------------
+
+17. forEach()
+
+Loop through list.
+
+list.forEach(System.out::println);
+
+----------------------------------------
+
+18. toArray()
+
+Convert List into Array.
+
+============================================================
+LIST BUSINESS EXAMPLE
+============================================================
+
+Shopping Cart
+
+ArrayList<String> cart
+
+Milk
+
+Rice
+
+Oil
+
+Eggs
+
+Duplicates Allowed
+
+============================================================
+2. SET
+============================================================
+
+Definition
+----------
+
+A Set stores only unique elements.
+
+Features
+
+✔ No Duplicates
+
+✔ No Index
+
+✔ One Null Allowed
+
+✔ Fast Searching
+
+============================================================
+SET TYPES
+============================================================
+
+HashSet
+
+Random Order
+
+-----------------------
+
+LinkedHashSet
+
+Insertion Order
+
+-----------------------
+
+TreeSet
+
+Sorted Order
+
+============================================================
+SET METHODS
+============================================================
+
+1. add()
+
+Add element.
+
+-------------------------------------
+
+2. remove()
+
+Remove element.
+
+-------------------------------------
+
+3. contains()
+
+Search element.
+
+-------------------------------------
+
+4. size()
+
+Total elements.
+
+-------------------------------------
+
+5. isEmpty()
+
+Empty or not.
+
+-------------------------------------
+
+6. clear()
+
+Remove everything.
+
+-------------------------------------
+
+7. addAll()
+
+Union.
+
+-------------------------------------
+
+8. retainAll()
+
+Intersection.
+
+-------------------------------------
+
+9. removeAll()
+
+Difference.
+
+-------------------------------------
+
+10. iterator()
+
+Traversal.
+
+-------------------------------------
+
+11. forEach()
+
+Loop.
+
+============================================================
+SET BUSINESS EXAMPLE
+============================================================
+
+College Student IDs
+
+101
+
+102
+
+103
+
+101
+
+Duplicate IDs are not allowed.
+
+============================================================
+3. MAP
+============================================================
+
+Definition
+----------
+
+A Map stores data as
+
+Key → Value
+
+Example
+
+101 → Rahul
+
+102 → Kiran
+
+103 → Teja
+
+Keys must be unique.
+
+Values can be duplicate.
+
+============================================================
+HASHMAP FEATURES
+============================================================
+
+✔ Key-Value Pair
+
+✔ Unique Keys
+
+✔ Duplicate Values Allowed
+
+✔ One Null Key
+
+✔ Multiple Null Values
+
+✔ Unordered
+
+============================================================
+HASHMAP METHODS
+============================================================
+
+1. put()
+
+Insert data.
+
+map.put(101,"Rahul");
+
+----------------------------------------
+
+2. putIfAbsent()
+
+Insert only if key absent.
+
+----------------------------------------
+
+3. get()
+
+Retrieve value.
+
+map.get(101);
+
+----------------------------------------
+
+4. getOrDefault()
+
+Returns value or default.
+
+----------------------------------------
+
+5. remove(key)
+
+Delete by key.
+
+----------------------------------------
+
+6. remove(key,value)
+
+Delete only if both match.
+
+----------------------------------------
+
+7. replace()
+
+Replace value.
+
+----------------------------------------
+
+8. replaceAll()
+
+Replace all values.
+
+----------------------------------------
+
+9. containsKey()
+
+Check key exists.
+
+----------------------------------------
+
+10. containsValue()
+
+Check value exists.
+
+----------------------------------------
+
+11. size()
+
+Total entries.
+
+----------------------------------------
+
+12. isEmpty()
+
+Empty check.
+
+----------------------------------------
+
+13. clear()
+
+Delete all.
+
+----------------------------------------
+
+14. keySet()
+
+Returns all keys.
+
+----------------------------------------
+
+15. values()
+
+Returns all values.
+
+----------------------------------------
+
+16. entrySet()
+
+Returns all key-value pairs.
+
+----------------------------------------
+
+17. forEach()
+
+Traverse map.
+
+----------------------------------------
+
+18. compute()
+
+Update value.
+
+----------------------------------------
+
+19. computeIfAbsent()
+
+Create value if key missing.
+
+----------------------------------------
+
+20. computeIfPresent()
+
+Update only if key exists.
+
+----------------------------------------
+
+21. merge()
+
+Merge values.
+
+============================================================
+HASHMAP BUSINESS EXAMPLE
+============================================================
+
+Employee Database
+
+101 → Rahul
+
+102 → Kiran
+
+103 → Teja
+
+Employee ID
+
+↓
+
+Employee Name
+
+============================================================
+COMPARISON
+============================================================
+
+Feature
+
+List
+
+Stores Data
+
+Elements
+
+Duplicates
+
+Allowed
+
+Order
+
+Maintained
+
+Index
+
+Available
+
+Example
+
+Shopping Cart
+
+----------------------------------------------------
+
+Set
+
+Stores Data
+
+Unique Elements
+
+Duplicates
+
+Not Allowed
+
+Order
+
+Depends on Type
+
+Index
+
+Not Available
+
+Example
+
+Student Roll Numbers
+
+----------------------------------------------------
+
+HashMap
+
+Stores Data
+
+Key → Value
+
+Duplicate Keys
+
+Not Allowed
+
+Duplicate Values
+
+Allowed
+
+Index
+
+Not Available
+
+Example
+
+Employee Database
+
+============================================================
+MOST IMPORTANT METHODS FOR INTERVIEWS
+============================================================
+
+LIST
+
+add()
+
+get()
+
+set()
+
+remove()
+
+contains()
+
+size()
+
+clear()
+
+indexOf()
+
+sort()
+
+reverse()
+
+----------------------------------------------------
+
+SET
+
+add()
+
+remove()
+
+contains()
+
+retainAll()
+
+removeAll()
+
+size()
+
+clear()
+
+----------------------------------------------------
+
+HASHMAP
+
+put()
+
+get()
+
+remove()
+
+replace()
+
+containsKey()
+
+containsValue()
+
+keySet()
+
+values()
+
+entrySet()
+
+forEach()
+
+============================================================
+REAL-LIFE APPLICATIONS
+============================================================
+
+LIST
+
+Shopping Cart
+
+Playlist
+
+Student Marks
+
+Recent Searches
+
+To-Do List
+
+----------------------------------------------------
+
+SET
+
+Unique Email IDs
+
+Roll Numbers
+
+Voter IDs
+
+Product IDs
+
+Tags
+
+----------------------------------------------------
+
+HASHMAP
+
+Employee Database
+
+Student Database
+
+Bank Accounts
+
+Product Inventory
+
+Phone Contacts
+
+============================================================
+INTERVIEW DEFINITION
+============================================================
+
+List
+
+"List is an ordered collection that allows duplicate elements
+and supports index-based access."
+
+----------------------------------------------------
+
+Set
+
+"Set is a collection that stores only unique elements and does
+not allow duplicates."
+
+----------------------------------------------------
+
+HashMap
+
+"HashMap is a collection that stores data in key-value pairs,
+where keys are unique and values can be duplicated."
+
+============================================================
+```
+
+### Recommended learning order
+
+1. **ArrayList** (master all methods first)
+2. **LinkedList**
+3. **HashSet**
+4. **LinkedHashSet**
+5. **TreeSet**
+6. **HashMap**
+7. **LinkedHashMap**
+8. **TreeMap**
+
+This progression builds naturally from the simplest collection types to the more advanced ones and is a solid foundation for Java interviews and practical development.
