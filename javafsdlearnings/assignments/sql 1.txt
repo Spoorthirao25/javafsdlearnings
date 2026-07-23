@@ -1,0 +1,90 @@
+
+1.CREATE TABLE if not exists users (
+    id INT ,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+
+-- Insert Rows
+INSERT INTO users (id, name,email )
+VALUES
+(1, 'Alice', 'alice@gmail.com'),
+(2, "hi", NULL),
+(3, 'Chalie', 'charlie@gmail.com');
+
+-- Display the Table
+SELECT * FROM users;
+
+2.FOREIGN KEY
+CREATE TABLE orders (
+    order id INT PRIMARY KEY,
+    customer_id INT,
+    FOREIGN KEY"(customer_id) REFRENCES customers(id)
+    --Ensures customer exists before creating order
+);
+3.-- Create Database
+CREATE DATABASE college;
+
+-- Select Database
+USE college;
+
+-- Create Table with Primary Key and Unique Key
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE
+);
+
+-- Insert Records
+INSERT INTO students (id, name, email, phone) VALUES
+(1, 'Shruthi', 'shruthi@gmail.com', '9876543210'),
+(2, 'Rahul', 'rahul@gmail.com', '9876543211'),
+(3, 'Anjali', 'anjali@gmail.com', '9876543212'),
+(4, 'Kiran', 'kiran@gmail.com', '9876543213'),
+(5, 'Sneha', 'sneha@gmail.com', '9876543214');
+
+-- Display Records
+SELECT * FROM students;
+4.CREATE TABLE orders (
+    order id INT PRIMARY KEY,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFRENCES customers(id)
+    --Ensures customer exists before creating order
+);
+create table customers(
+    id int primary key,
+    name varchar(10),
+);
+insert into orders(order_id, customer_id) values (100,1);
+5.CREATE TABLE voters (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT CHECK (age >= 18)
+);
+
+INSERT INTO voters (id, name, age)
+VALUES (1, 'manogna', 22);
+
+INSERT INTO voters (id, name, age)
+VALUES (2, 'manu', 20);
+6.CREATE TABLE voters (
+    id INT auto_increment primary key,
+        name VARCHAR(100),
+    age INT CHECK(age>=18),
+  );
+insert into voters(id,name,age) values (1,'aj',12);
+insert into voters(,name,age) values ('ram',20);
+7.SELECT name, email,marks
+FROM students
+where marks>90;
+
+--Select with alias (renaming columns)
+SELECT name AS 'Student Name', marks AS 'Score' FROM students;
+
+--Select distinct values
+SELECT DISTINCT marks FROM students; --Unique marks values
+
+--Select with LIMIT(pagination)
+SELECT * FROM students LIMIT 5; --First 5 rows
+SELECT * FROM students LIMIT 10 OFFSET 5;
