@@ -125,14 +125,14 @@ INSERT INTO LibraryBooks VALUES
 (101,'Java');
 
 INSERT INTO BookIssues VALUES
-(1,'Sharanya',101),
+(1,'Spoorthi',101),
 (2,'Mouni',102),
 (3,'Priya',105),
 (4,'Anu',103);
 
 //Error: Duplicate entry for PRIMARY KEY.
 INSERT INTO BookIssues VALUES
-(1,'Sharanya',101),
+(1,'Spoorthi',101),
 (1,'Mouni',102);
 
 INNER JOIN:
@@ -192,27 +192,27 @@ book_id	book_name	author
 Output:
 BookIssues
 issue_id	student_name	book_id
-1	Sharanya	101
+1	Spoorthi	101
 2	Mouni	    102
 3	Priya	    105
 4	Anu	         103
 
 Output:
 book_name	student_name
-Java	Sharanya
+Java	Spoorthi
 Python	Mouni
 SQL	    Anu
  
 Output:
 book_name	student_name
-Java	Sharanya
+Java	Spoorthi
 Python	Mouni
 SQL  	Anu
 C++	    NULL
 
 Output:
 book_name	student_name
-Java	Sharanya
+Java	Spoorthi
 Java	Mouni
 Java	Priya
 Java	Anu
@@ -220,18 +220,18 @@ Python	Bhavana
 Python	Mouni
 Python	Priya
 Python	Anu
-SQL	Sharanya
+SQL	Spoorthi
 SQL	Mouni
 SQL	Priya
 SQL	Anu
-C++	Sharanya
+C++	Spoorthi
 C++	Mouni
 C++	Priya
 C++	Anu
 
 Output:
 book_name	student_name
-Java	Sharanya
+Java	Spoorthi
 Python	Mouni
 SQL  	Anu
 NULL	Priya
