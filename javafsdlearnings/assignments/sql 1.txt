@@ -88,3 +88,214 @@ SELECT DISTINCT marks FROM students; --Unique marks values
 --Select with LIMIT(pagination)
 SELECT * FROM students LIMIT 5; --First 5 rows
 SELECT * FROM students LIMIT 10 OFFSET 5;
+ASSIGNMENT
+
+23-07-2027
+CREATE TABLE LibraryBooks (
+    book_id INT PRIMARY KEY,
+    book_name VARCHAR(50),
+    author VARCHAR(50)
+);
+ // Error: Syntax error (missing comma).
+CREATE TABLE LibraryBooks (
+    book_id INT PRIMARY KEY
+    book_name VARCHAR(50),
+    author VARCHAR(50)
+);
+CREATE TABLE BookIssues (
+    issue_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    book_id INT
+);
+ // Error: Duplicate column name issue_id.
+CREATE TABLE BookIssues (
+    issue_id INT,
+    issue_id INT,
+    student_name VARCHAR(50),
+    book_id INT
+);
+INSERT INTO LibraryBooks VALUES
+(101,'Java','James'),
+(102,'Python','Guido'),
+(103,'SQL','Codd'),
+(104,'C++','Bjarne');
+
+// Error: Column count doesn't match value count.
+INSERT INTO LibraryBooks VALUES
+(101,'Java');
+
+INSERT INTO BookIssues VALUES
+(1,'Sharanya',101),
+(2,'Mouni',102),
+(3,'Priya',105),
+(4,'Anu',103);
+
+//Error: Duplicate entry for PRIMARY KEY.
+INSERT INTO BookIssues VALUES
+(1,'Sharanya',101),
+(1,'Mouni',102);
+
+INNER JOIN:
+SELECT l.book_name, b.student_name
+FROM LibraryBooks l
+INNER JOIN BookIssues b
+ON l.book_id = b.book_id;
+
+//Error: Unknown column l.bookid.
+SELECT l.book_name, b.student_name
+FROM LibraryBooks l
+INNER JOIN BookIssues b
+ON l.bookid = b.book_id;
+
+LEFT JOIN:
+SELECT l.book_name, b.student_name
+FROM LibraryBooks l
+LEFT JOIN BookIssues b
+ON l.book_id = b.book_id;
+
+//Error: Missing ON clause.
+SELECT *
+FROM LibraryBooks l
+LEFT JOIN BookIssues b;
+
+RIGHT JOIN:
+SELECT l.book_name, b.student_name
+FROM LibraryBooks l
+RIGHT JOIN BookIssues b
+ON l.book_id = b.book_id;
+
+//Error: Unknown column l.id.
+SELECT *
+FROM LibraryBooks l
+RIGHT JOIN BookIssues b
+ON l.id = b.book_id;
+
+CROSS JOIN:
+SELECT l.book_name, b.student_name
+FROM LibraryBooks l
+CROSS JOIN BookIssues b;
+
+// Error: Syntax error (missing JOIN keyword).
+SELECT *
+FROM LibraryBooks
+CROSS BookIssues;
+
+
+Output:
+LibraryBooks
+book_id	book_name	author
+101	    Java	   James
+102   	Python	   Guido
+103	    SQL	       Codd
+104	    C++	       Bjarne
+
+Output:
+BookIssues
+issue_id	student_name	book_id
+1	Sharanya	101
+2	Mouni	    102
+3	Priya	    105
+4	Anu	         103
+
+Output:
+book_name	student_name
+Java	Sharanya
+Python	Mouni
+SQL	    Anu
+ 
+Output:
+book_name	student_name
+Java	Sharanya
+Python	Mouni
+SQL  	Anu
+C++	    NULL
+
+Output:
+book_name	student_name
+Java	Sharanya
+Java	Mouni
+Java	Priya
+Java	Anu
+Python	Bhavana
+Python	Mouni
+Python	Priya
+Python	Anu
+SQL	Sharanya
+SQL	Mouni
+SQL	Priya
+SQL	Anu
+C++	Sharanya
+C++	Mouni
+C++	Priya
+C++	Anu
+
+Output:
+book_name	student_name
+Java	Sharanya
+Python	Mouni
+SQL  	Anu
+NULL	Priya
+#ASS - JOINS
+-- Drop tables if they already exist
+DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Departments;
+
+-- Create Employees table
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    dept_id INT
+);
+
+-- Create Departments table
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+-- Insert data into Employees
+INSERT INTO Employees VALUES
+(1, 'Alice', 101),
+(2, 'Bob', 102),
+(3, 'Charlie', 103),
+(4, 'David', NULL);
+
+-- Insert data into Departments
+INSERT INTO Departments VALUES
+(101, 'HR'),
+(102, 'Finance'),
+(104, 'IT');
+
+-- ==========================
+-- INNER JOIN
+-- ==========================
+SELECT
+    e.emp_id,
+    e.emp_name,
+    d.dept_name
+FROM Employees e
+INNER JOIN Departments d
+ON e.dept_id = d.dept_id;
+
+-- ==========================
+-- LEFT JOIN
+-- ==========================
+SELECT
+    e.emp_id,
+    e.emp_name,
+    d.dept_name
+FROM Employees e
+LEFT JOIN Departments d
+ON e.dept_id = d.dept_id;
+
+-- ==========================
+-- RIGHT JOIN
+-- ==========================
+SELECT
+    e.emp_id,
+    e.emp_name,
+    d.dept_name
+FROM Employees e
+RIGHT JOIN Departments d
+ON e.dept_id = d.dept_id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
