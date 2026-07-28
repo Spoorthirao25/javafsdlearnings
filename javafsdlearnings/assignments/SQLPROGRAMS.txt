@@ -33,17 +33,17 @@ mysql> show tables;
 +----------------+
 7 rows in set (0.07 sec)
 
-mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS',13/06,'9963xxxxxx');
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'spoorthi','CS',13/06,'9963xxxxxx');
 ERROR 1292 (22007): Incorrect date value: '2.166666666' for column 'date_of_birth' at row 1
 mysql>
-mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS'',13/06','9963xxxxxx');
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'spoorthi','CS'',13/06','9963xxxxxx');
 ERROR 1136 (21S01): Column count doesn't match value count at row 1
-mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS','13/06','9963xxxxxx');
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'spoorthi','CS','13/06','9963xxxxxx');
 ERROR 1292 (22007): Incorrect date value: '13/06' for column 'date_of_birth' at row 1
-mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS','2007/06/13','9080909099');
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'spoorthi','CS','2007/06/13','9080909099');
 Query OK, 1 row affected, 1 warning (0.04 sec)
 
-mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(2,'ammulu','CS','2005/06/19','8880989099'),
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(2,'pavithra','CS','2005/06/19','8880989099'),
     -> (3,'anjuna','CS','2007/09/16','7778889996'),
     -> (4,'anjali','CS','2006/02/16','9975589996'),
     -> (5,'prathyusha','CS','2007/06/12','8875589996');
@@ -54,8 +54,8 @@ mysql> select * from mru;
 +----+------------+--------+---------------+--------------+
 | id | name       | course | date_of_birth | phone_number |
 +----+------------+--------+---------------+--------------+
-|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
-|  2 | ammulu     | CS     | 2005-06-19    | 8880989099   |
+|  1 | spoorthi   | CS     | 2007-06-13    | 9080909099   |
+|  2 | pavithra   | CS     | 2005-06-19    | 8880989099   |
 |  3 | anjuna     | CS     | 2007-09-16    | 7778889996   |
 |  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
 |  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
@@ -63,7 +63,7 @@ mysql> select * from mru;
 5 rows in set (0.00 sec)
 
 mysql> update
-    -> ammulu as ammu where id=2;
+    -> pavithra as ammu where id=2;
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id=2' at line 2
 mysql>   update mru
     -> set course ='CSE'
@@ -75,8 +75,8 @@ mysql> select * from mru;
 +----+------------+--------+---------------+--------------+
 | id | name       | course | date_of_birth | phone_number |
 +----+------------+--------+---------------+--------------+
-|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
-|  2 | ammulu     | CS     | 2005-06-19    | 8880989099   |
+|  1 | spoorthi   | CS     | 2007-06-13    | 9080909099   |
+|  2 | pavithra   | CS     | 2005-06-19    | 8880989099   |
 |  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   |
 |  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
 |  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
@@ -91,7 +91,7 @@ mysql> select * from mru;
 +----+------------+--------+---------------+--------------+
 | id | name       | course | date_of_birth | phone_number |
 +----+------------+--------+---------------+--------------+
-|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
+|  1 | spoorthi  | CS     | 2007-06-13    | 9080909099   |
 |  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   |
 |  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
 |  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
@@ -113,7 +113,7 @@ mysql>  select name as student_name
 +--------------+
 | student_name |
 +--------------+
-| soujanya     |
+| spoorthi   |
 | anjuna       |
 | anjali       |
 | prathyusha   |
@@ -124,7 +124,7 @@ mysql> select * from mru;
 +----+------------+--------+---------------+--------------+---------+
 | id | name       | course | date_of_birth | phone_number | college |
 +----+------------+--------+---------------+--------------+---------+
-|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   | NULL    |
+|  1 | spoorthi  | CS     | 2007-06-13    | 9080909099   | NULL    |
 |  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   | NULL    |
 |  4 | anjali     | CS     | 2006-02-16    | 9975589996   | NULL    |
 |  5 | prathyusha | CS     | 2007-06-12    | 8875589996   | NULL    |
@@ -260,10 +260,10 @@ Query OK, 4 rows affected (0.03 sec)
 Records: 4  Duplicates: 0  Warnings: 0
 
 mysql> insert into bookissues values
-    -> (1,'ammulu',101),
-    -> (2,'ammu',102),
+    -> (1,'spoorthi',101),
+    -> (2,'pavithra',102),
     -> (3,'soujanya',103),
-    -> (4,'souju',104);
+    -> (4,'varshini',104);
 Query OK, 4 rows affected (0.01 sec)
 Records: 4  Duplicates: 0  Warnings: 0
 
@@ -271,8 +271,8 @@ mysql> select * from bookissues;
 +----------+--------------+---------+
 | issue_id | student_name | book_id |
 +----------+--------------+---------+
-|        1 | ammulu       |     101 |
-|        2 | ammu         |     102 |
+|        1 | spoorthi     |     101 |
+|        2 | pavi         |     102 |
 |        3 | soujanya     |     103 |
 |        4 | souju        |     104 |
 +----------+--------------+---------+
@@ -296,8 +296,8 @@ mysql> select I.book_name,b.student_name
 +-----------+--------------+
 | book_name | student_name |
 +-----------+--------------+
-| java      | ammulu       |
-| python    | ammu         |
+| java      | spoorthi     |
+| python    | pavi         |
 | sql       | soujanya     |
 | c++       | souju        |
 +-----------+--------------+
@@ -315,8 +315,8 @@ mysql> select I.book_name,b.student_name
 +-----------+--------------+
 | book_name | student_name |
 +-----------+--------------+
-| java      | ammulu       |
-| python    | ammu         |
+| java      | spoorthi     |
+| python    | pavi         |
 | sql       | soujanya     |
 | c++       | souju        |
 +-----------+--------------+
@@ -336,14 +336,14 @@ mysql> select I.book_name,b.student_name
 +-----------+--------------+
 | book_name | student_name |
 +-----------+--------------+
-| c++       | ammulu       |
-| sql       | ammulu       |
-| python    | ammulu       |
-| java      | ammulu       |
-| c++       | ammu         |
-| sql       | ammu         |
-| python    | ammu         |
-| java      | ammu         |
+| c++       | spoorthi     |
+| sql       | spoorthi     |
+| python    | spoorthi     |
+| java      | spoorthi     |
+| c++       | pavi         |
+| sql       | pavi         |
+| python    | pavi         |
+| java      | pavi         |
 | c++       | soujanya     |
 | sql       | soujanya     |
 | python    | soujanya     |
@@ -374,14 +374,14 @@ mysql> select * from librarybooks I
 +---------+-----------+--------+----------+--------------+---------+
 | book_id | book_name | author | issue_id | student_name | book_id |
 +---------+-----------+--------+----------+--------------+---------+
-|     104 | c++       | bjame  |        1 | ammulu       |     101 |
-|     103 | sql       | codd   |        1 | ammulu       |     101 |
-|     102 | python    | guido  |        1 | ammulu       |     101 |
-|     101 | java      | james  |        1 | ammulu       |     101 |
-|     104 | c++       | bjame  |        2 | ammu         |     102 |
-|     103 | sql       | codd   |        2 | ammu         |     102 |
-|     102 | python    | guido  |        2 | ammu         |     102 |
-|     101 | java      | james  |        2 | ammu         |     102 |
+|     104 | c++       | bjame  |        1 | spoorthi     |     101 |
+|     103 | sql       | codd   |        1 | spoorthi     |     101 |
+|     102 | python    | guido  |        1 | spoorthi     |     101 |
+|     101 | java      | james  |        1 | spoorthi     |     101 |
+|     104 | c++       | bjame  |        2 | pavi         |     102 |
+|     103 | sql       | codd   |        2 | pavi         |     102 |
+|     102 | python    | guido  |        2 | pavi         |     102 |
+|     101 | java      | james  |        2 | pavi         |     102 |
 |     104 | c++       | bjame  |        3 | soujanya     |     103 |
 |     103 | sql       | codd   |        3 | soujanya     |     103 |
 |     102 | python    | guido  |        3 | soujanya     |     103 |
@@ -455,8 +455,8 @@ mysql> show tables;
 mysql> describe table;
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
 mysql> insert into student
-    -> values(01,"soujanya",19,"CS",13/07),
-    -> (02,"ammulu",19,"CS",14/08),
+    -> values(01,"spoorthi",19,"CS",13/07),
+    -> (02,"pavi",19,"CS",14/08),
     -> (03,"prathyusha",19,"CS",18/04)
     -> ,
     -> (04,"anjuna",19,"CS",16/09);
@@ -467,8 +467,8 @@ mysql> select * from student;
 +------+------------+------+--------+------+
 | id   | name       | age  | branch | bod  |
 +------+------------+------+--------+------+
-|    1 | soujanya   |   19 | CS     |    2 |
-|    2 | ammulu     |   19 | CS     |    2 |
+|    1 | spoorthi   |   19 | CS     |    2 |
+|    2 | pavi       |   19 | CS     |    2 |
 |    3 | prathyusha |   19 | CS     |    5 |
 |    4 | anjuna     |   19 | CS     |    2 |
 +------+------------+------+--------+------+
@@ -484,8 +484,8 @@ mysql> select * from student;
 +------+------------+------+--------+------+
 | id   | name       | age  | branch | bod  |
 +------+------------+------+--------+------+
-|    1 | soujanya   |   19 | CS     |    2 |
-|    2 | ammulu     |   20 | CS     |    2 |
+|    1 | spoorthi   |   19 | CS     |    2 |
+|    2 | pavi       |   20 | CS     |    2 |
 |    3 | prathyusha |   19 | CS     |    5 |
 |    4 | anjuna     |   19 | CS     |    2 |
 +------+------------+------+--------+------+
