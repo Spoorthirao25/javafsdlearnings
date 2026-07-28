@@ -1,0 +1,509 @@
+1.mysql> use java;
+Database changed
+mysql> create table mru(
+    -> id int,
+    -> name varchar(20),
+    -> age int,
+    -> course varchar(20),
+    -> date_of_birth date,
+    -> ph no int
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no int
+)' at line 7
+mysql> create table mru(
+    -> id int primary key,
+    -> name varchar(20),
+    -> course varchar(20),
+    -> date_of_birth date,
+    -> phone_number varchar(10)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_java |
++----------------+
+| customers      |
+| mru            |
+| orders         |
+| student        |
+| student1       |
+| students       |
+| voters         |
++----------------+
+7 rows in set (0.07 sec)
+
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS',13/06,'9963xxxxxx');
+ERROR 1292 (22007): Incorrect date value: '2.166666666' for column 'date_of_birth' at row 1
+mysql>
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS'',13/06','9963xxxxxx');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS','13/06','9963xxxxxx');
+ERROR 1292 (22007): Incorrect date value: '13/06' for column 'date_of_birth' at row 1
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(1,'soujanya','CS','2007/06/13','9080909099');
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into mru(id,name,course,date_of_birth,phone_number)values(2,'ammulu','CS','2005/06/19','8880989099'),
+    -> (3,'anjuna','CS','2007/09/16','7778889996'),
+    -> (4,'anjali','CS','2006/02/16','9975589996'),
+    -> (5,'prathyusha','CS','2007/06/12','8875589996');
+Query OK, 4 rows affected, 4 warnings (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 4
+
+mysql> select * from mru;
++----+------------+--------+---------------+--------------+
+| id | name       | course | date_of_birth | phone_number |
++----+------------+--------+---------------+--------------+
+|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
+|  2 | ammulu     | CS     | 2005-06-19    | 8880989099   |
+|  3 | anjuna     | CS     | 2007-09-16    | 7778889996   |
+|  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
+|  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
++----+------------+--------+---------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> update
+    -> ammulu as ammu where id=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id=2' at line 2
+mysql>   update mru
+    -> set course ='CSE'
+    -> where id =3;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from mru;
++----+------------+--------+---------------+--------------+
+| id | name       | course | date_of_birth | phone_number |
++----+------------+--------+---------------+--------------+
+|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
+|  2 | ammulu     | CS     | 2005-06-19    | 8880989099   |
+|  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   |
+|  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
+|  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
++----+------------+--------+---------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> delete from mru
+    -> where id =2;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from mru;
++----+------------+--------+---------------+--------------+
+| id | name       | course | date_of_birth | phone_number |
++----+------------+--------+---------------+--------------+
+|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   |
+|  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   |
+|  4 | anjali     | CS     | 2006-02-16    | 9975589996   |
+|  5 | prathyusha | CS     | 2007-06-12    | 8875589996   |
++----+------------+--------+---------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table mru
+    -> add college varchar(20);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into mru(id,college)values(1,'mruh'),
+    -> (2,'mru'),
+    -> (3,'mru'),
+    -> (4,'mru');
+ERROR 1062 (23000): Duplicate entry '1' for key 'mru.PRIMARY'
+mysql>  select name as student_name
+    -> from mru;
++--------------+
+| student_name |
++--------------+
+| soujanya     |
+| anjuna       |
+| anjali       |
+| prathyusha   |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from mru;
++----+------------+--------+---------------+--------------+---------+
+| id | name       | course | date_of_birth | phone_number | college |
++----+------------+--------+---------------+--------------+---------+
+|  1 | soujanya   | CS     | 2007-06-13    | 9080909099   | NULL    |
+|  3 | anjuna     | CSE    | 2007-09-16    | 7778889996   | NULL    |
+|  4 | anjali     | CS     | 2006-02-16    | 9975589996   | NULL    |
+|  5 | prathyusha | CS     | 2007-06-12    | 8875589996   | NULL    |
++----+------------+--------+---------------+--------------+---------+
+4 rows in set (0.00 sec)
+
+2.mysql> use java;
+Database changed
+mysql> create table employee(
+    -> id int primary key,
+    -> department varchar(30),
+    -> salary int
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> INSERT INTO employee VALUES
+    -> (1,'HR',30000),
+    -> (2,'HR',45000),
+    -> (3,'HR',40000),
+    -> (4,'IT',50000),
+    -> (5,'IT',65000),
+    -> (6,'IT',60000),
+    -> (7,'Sales',25000),
+    -> (8,'Sales',35000),
+    -> (9,'Sales',32000);
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+------------+--------+
+| id | department | salary |
++----+------------+--------+
+|  1 | HR         |  30000 |
+|  2 | HR         |  45000 |
+|  3 | HR         |  40000 |
+|  4 | IT         |  50000 |
+|  5 | IT         |  65000 |
+|  6 | IT         |  60000 |
+|  7 | Sales      |  25000 |
+|  8 | Sales      |  35000 |
+|  9 | Sales      |  32000 |
++----+------------+--------+
+9 rows in set (0.00 sec)
+
+mysql> INSERT INTO employee VALUES
+    -> (10,'IT',50000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++----+------------+--------+
+| id | department | salary |
++----+------------+--------+
+|  1 | HR         |  30000 |
+|  2 | HR         |  45000 |
+|  3 | HR         |  40000 |
+|  4 | IT         |  50000 |
+|  5 | IT         |  65000 |
+|  6 | IT         |  60000 |
+|  7 | Sales      |  25000 |
+|  8 | Sales      |  35000 |
+|  9 | Sales      |  32000 |
+| 10 | IT         |  50000 |
++----+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select department , max(salary)
+    -> from employee group by department;
++------------+-------------+
+| department | max(salary) |
++------------+-------------+
+| HR         |       45000 |
+| IT         |       65000 |
+| Sales      |       35000 |
++------------+-------------+
+3 rows in set (0.04 sec)
+
+mysql> select department, max(salary) as highest_salary
+    -> from employee
+    -> group by department;
++------------+----------------+
+| department | highest_salary |
++------------+----------------+
+| HR         |          45000 |
+| IT         |          65000 |
+| Sales      |          35000 |
++------------+----------------+
+3 rows in set (0.00 sec)
+
+3.mysql> use java;
+Database changed
+mysql> create table librarybooks(
+    -> book_id int primary key,
+    -> book_name varchar(20),
+    -> author varchar(20)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> create table bookissues(
+    -> issue_id int primary key,
+    -> student_name varchar(20),
+    -> book_id int
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into librarybooks
+    -> values(101,'java','james'),
+    -> (102,'python','guido),
+    '> (103,'sql','codd'),
+    '> (104,'c++','bjame')
+    '> );
+    '>
+    '> );
+    '> m;
+    '> insert into librarybooks(book_id,book_name,author)values
+    '> (101,'java','james'),
+    '> (102,'python','guido),
+    -> (103,'sql','codd'),
+    -> (104,'c++','bjame')
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sql','codd'),
+(104,'c++','bjame')
+);
+
+);
+m;
+insert into librarybooks(book_id,boo' at line 4
+mysql> insert into librarybooks(book_id,book_name,author)values
+    -> (101,'java','james'),
+    -> (102,'python','guido'),
+    -> (103,'sql','codd'),
+    -> (104,'c++','bjame');
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into bookissues values
+    -> (1,'ammulu',101),
+    -> (2,'ammu',102),
+    -> (3,'soujanya',103),
+    -> (4,'souju',104);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from bookissues;
++----------+--------------+---------+
+| issue_id | student_name | book_id |
++----------+--------------+---------+
+|        1 | ammulu       |     101 |
+|        2 | ammu         |     102 |
+|        3 | soujanya     |     103 |
+|        4 | souju        |     104 |
++----------+--------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from librarybooks;
++---------+-----------+--------+
+| book_id | book_name | author |
++---------+-----------+--------+
+|     101 | java      | james  |
+|     102 | python    | guido  |
+|     103 | sql       | codd   |
+|     104 | c++       | bjame  |
++---------+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select I.book_name,b.student_name
+    -> from librarybooks I
+    -> left join bookissues b
+    -> on I.book_id=b.book_id;
++-----------+--------------+
+| book_name | student_name |
++-----------+--------------+
+| java      | ammulu       |
+| python    | ammu         |
+| sql       | soujanya     |
+| c++       | souju        |
++-----------+--------------+
+4 rows in set (0.02 sec)
+
+mysql> select I.book_name,b.student_name
+    -> from librarybooks I
+    -> right join bookissues b
+    -> on I.id=b.book_id;
+ERROR 1054 (42S22): Unknown column 'I.id' in 'on clause'
+mysql> select I.book_name,b.student_name
+    -> from librarybooks I
+    -> right join bookissues b
+    -> on I.book_id=b.book_id;
++-----------+--------------+
+| book_name | student_name |
++-----------+--------------+
+| java      | ammulu       |
+| python    | ammu         |
+| sql       | soujanya     |
+| c++       | souju        |
++-----------+--------------+
+4 rows in set (0.01 sec)
+
+mysql> select*from librarybooks I
+    -> right join bookissues
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> select*from librarybooks I
+    -> right join bookissues b
+    -> on I.id=b.book_id;
+ERROR 1054 (42S22): Unknown column 'I.id' in 'on clause'
+mysql> select I.book_name,b.student_name
+    -> from librarybooks I
+    -> cross join bookissues b;
++-----------+--------------+
+| book_name | student_name |
++-----------+--------------+
+| c++       | ammulu       |
+| sql       | ammulu       |
+| python    | ammulu       |
+| java      | ammulu       |
+| c++       | ammu         |
+| sql       | ammu         |
+| python    | ammu         |
+| java      | ammu         |
+| c++       | soujanya     |
+| sql       | soujanya     |
+| python    | soujanya     |
+| java      | soujanya     |
+| c++       | souju        |
+| sql       | souju        |
+| python    | souju        |
+| java      | souju        |
++-----------+--------------+
+16 rows in set (0.00 sec)
+
+mysql> select * from librarybooks
+    -> cross bookissues;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bookissues' at line 2
+mysql> select * from librarybooks;
++---------+-----------+--------+
+| book_id | book_name | author |
++---------+-----------+--------+
+|     101 | java      | james  |
+|     102 | python    | guido  |
+|     103 | sql       | codd   |
+|     104 | c++       | bjame  |
++---------+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from librarybooks I
+    -> cross join bookissues b;
++---------+-----------+--------+----------+--------------+---------+
+| book_id | book_name | author | issue_id | student_name | book_id |
++---------+-----------+--------+----------+--------------+---------+
+|     104 | c++       | bjame  |        1 | ammulu       |     101 |
+|     103 | sql       | codd   |        1 | ammulu       |     101 |
+|     102 | python    | guido  |        1 | ammulu       |     101 |
+|     101 | java      | james  |        1 | ammulu       |     101 |
+|     104 | c++       | bjame  |        2 | ammu         |     102 |
+|     103 | sql       | codd   |        2 | ammu         |     102 |
+|     102 | python    | guido  |        2 | ammu         |     102 |
+|     101 | java      | james  |        2 | ammu         |     102 |
+|     104 | c++       | bjame  |        3 | soujanya     |     103 |
+|     103 | sql       | codd   |        3 | soujanya     |     103 |
+|     102 | python    | guido  |        3 | soujanya     |     103 |
+|     101 | java      | james  |        3 | soujanya     |     103 |
+|     104 | c++       | bjame  |        4 | souju        |     104 |
+|     103 | sql       | codd   |        4 | souju        |     104 |
+|     102 | python    | guido  |        4 | souju        |     104 |
+|     101 | java      | james  |        4 | souju        |     104 |
++---------+-----------+--------+----------+--------------+---------+
+16 rows in set (0.01 sec)
+
+mysql> select * from librarybooks I
+    -> ;
++---------+-----------+--------+
+| book_id | book_name | author |
++---------+-----------+--------+
+|     101 | java      | james  |
+|     102 | python    | guido  |
+|     103 | sql       | codd   |
+|     104 | c++       | bjame  |
++---------+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *
+    ->  from librarybooks I
+    -> cross bookissues b;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bookissues b' at line 3
+4.mysql> create database java;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| java               |
+| mm                 |
+| mysql              |
+| performance_schema |
+| student_db         |
++--------------------+
+6 rows in set (0.14 sec)
+
+mysql> use java;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| java       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table student(
+    -> id int,
+    -> name varchar(100),
+    -> age int,
+    -> branch varchar(30),
+    -> bod int
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_java |
++----------------+
+| student        |
++----------------+
+1 row in set (0.05 sec)
+
+mysql> describe table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into student
+    -> values(01,"soujanya",19,"CS",13/07),
+    -> (02,"ammulu",19,"CS",14/08),
+    -> (03,"prathyusha",19,"CS",18/04)
+    -> ,
+    -> (04,"anjuna",19,"CS",16/09);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+------------+------+--------+------+
+| id   | name       | age  | branch | bod  |
++------+------------+------+--------+------+
+|    1 | soujanya   |   19 | CS     |    2 |
+|    2 | ammulu     |   19 | CS     |    2 |
+|    3 | prathyusha |   19 | CS     |    5 |
+|    4 | anjuna     |   19 | CS     |    2 |
++------+------------+------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> set age = 20
+    -> where id =2;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+------------+------+--------+------+
+| id   | name       | age  | branch | bod  |
++------+------------+------+--------+------+
+|    1 | soujanya   |   19 | CS     |    2 |
+|    2 | ammulu     |   20 | CS     |    2 |
+|    3 | prathyusha |   19 | CS     |    5 |
+|    4 | anjuna     |   19 | CS     |    2 |
++------+------------+------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> delect from student
+    -> where id=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id=2' at line 1
+mysql> delect from student
+    -> where id = 2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id = 2' at line 1
+mysql> delect from student
+    -> where id = 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id = 1' at line 1
+mysql> after table student
+    -> add phone varchar(15);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after table student
+add phone varchar(15)' at line 1
